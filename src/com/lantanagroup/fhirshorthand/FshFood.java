@@ -45,6 +45,10 @@ import org.hl7.fhir.r4.conformance.ProfileUtilities; // has a generateSnapshot m
 
 import com.google.common.io.Files;
 
+/**
+ * @author rickg
+ *
+ */
 public class FshFood {
 	
 	private static final String OUT_FOLDER = "outFolder";
@@ -107,6 +111,12 @@ public class FshFood {
 		ft = new FshTransformer();
 	}
 	
+	
+	/**
+	 * Parses the inputFile in either FHIR JSON or XML serializes it as XML into the temp directory. If the input file is a StructureDefinition that's it. If it is a Bundle then it serializes each StructureDefinition in the Bundle into a separate file. 
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
 	public void normalizeInput()  throws IOException, URISyntaxException {
 		FileParser fp = new FileParser();
 		Resource res = fp.parse(inFile);
